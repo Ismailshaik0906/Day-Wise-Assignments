@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Dashboard - PMS</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      background: #f4f6f9;
+    }
+    .navbar-brand {
+      font-family: 'Brush Script MT', cursive;
+      font-size: 1.8rem;
+    }
+    .card {
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+    .card:hover {
+      transform: scale(1.03);
+    }
+    
+    .cart-badge {
+      background: red;
+      color: white;
+      border-radius: 50%;
+      padding: 4px 8px;
+      font-size: 0.8rem;
+      margin-left: 5px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Product Management</a>
+      <div class="d-flex">
+        <a class="btn btn-primary me-2" href="user.html">Product List</a>
+        <a class="btn btn-info me-2" href="#">
+          Cart <span id="cart-count" class="cart-badge">0</span>
+        </a>
+        <a class="btn btn-warning me-2" href="checkout.html">Checkout</a>
+        <a class="btn btn-danger" href="#" onclick="logout()">Logout</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Welcome Section -->
+  <div class="container mt-4">
+    <h2 class="text-center">Welcome, <span id="username"></span> 👋</h2>
+    <p class="text-center text-muted">Browse and add products to your cart</p>
+  </div>
+
+  <!-- Products Section -->
+  <div class="container mt-4">
+    <h3 class="mb-4">Available Products</h3>
+    <div class="row" id="productList"></div>
+  </div>
+
+  <!-- Bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Script -->
+  <script>
+  const API_URL = "http://localhost:3000/products";
+  const CART_API_URL = "http://localhost:3000/cart";
+
+  // Load products
+  function loadProducts() {
+    fetch(API_URL)
+      .then(res => res.json())
+      .then(products => {
+        const productList = document.getElementById("productList");
+        productList.innerHTML = "";
+        if (products.length === 0) {
+          productList.innerHTML = "<p>No Products available.</p>";
+          return;
+        }
+
+        products.forEach(product => {
+          const card = `
+            <div class="col-md-4 mb-3">
+              <div class="card h-100">
+                <img src="${product.image}" 
+                     class="card-img-top" 
+                     alt="${product.name}" 
+                     style=" object-fit:cover;">
+                <div class="card-body">
+                  <h5 class="card-title">${product.name}</h5>
+                  <p class="card-text">${product.description}</p>
+                  <p><strong>Price: </strong>₹${product.price}</p>
+                  <button class="btn btn-primary" onclick="addToCart(${product.id}, '${product.name}', ${product.price})">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          `;
+          productList.innerHTML += card;
+        });
+      })
+      .catch(err => console.error("Error loading products:", err));
+  }
+
+  // Add to cart
+  function addToCart(id, name, price) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let existingItem = cart.find(item => item.id === id);
+    if (existingItem) {
+      existingItem.quantity += 1;
+    } else {
+      cart.push({ id, name, price, quantity: 1 });
+    }
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartCount();
+
+    // Also save to backend
+    fetch(CART_API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id, name, price, quantity: 1 })
+    })
+    .then(res => res.json())
+    .then(data => console.log("Cart item stored on server:", data))
+    .catch(err => console.error("Failed to store cart on server:", err));
+  }
+
+  // Update cart count
+  function updateCartCount() {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+    document.getElementById("cart-count").innerText = totalCount;
+  }
+
+  // Logout
+  function logout() {
+    localStorage.removeItem("loggedInUser");
+    window.location.href = "login.html";
+  }
+
+  // On page load
+  window.onload = () => {
+    const user = JSON.parse(localStorage.getItem("loggedInUser"));
+    if (!user || user.role !== "user") {
+      alert("Unauthorized! Please login as a user.");
+      window.location.href = "login.html";
+    } else {
+      document.getElementById("username").innerText = user.name;
+    }
+    loadProducts();
+    updateCartCount();
+  };
+  </script>
+</body>
+</html>

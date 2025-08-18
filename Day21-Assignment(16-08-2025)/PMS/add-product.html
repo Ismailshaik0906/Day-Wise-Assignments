@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Add Product</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+  <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Admin Dashboard</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+            <a class="nav-link" href="admin.html">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="add-product.html">Add Product</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="admin.html">Product List</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-danger" href="#" onclick="logout()">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Add Product Form -->
+  <div class="container mt-5">
+    <h2 class="mb-4">Add New Product</h2>
+    <form id="productForm" enctype="multipart/form-data">
+      <div class="mb-3">
+        <label for="name" class="form-label">Product Name</label>
+        <input type="text" class="form-control" id="name" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" id="description" rows="3" required></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label for="price" class="form-label">Price (₹)</label>
+        <input type="number" class="form-control" id="price" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="image" class="form-label">Product Image</label>
+        <input type="file" class="form-control" id="image" accept="image/*" required>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Add Product</button>
+    </form>
+  </div>
+
+  <script>
+    const API_URL = "http://localhost:3000/products";
+
+    document.getElementById("productForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      let name = document.getElementById("name").value;
+      let description = document.getElementById("description").value;
+      let price = document.getElementById("price").value;
+      let imageInput = document.getElementById("image");
+      let imagePath = "images/" + imageInput.files[0].name;
+
+      // First, fetch existing products to calculate maxId
+      fetch(API_URL)
+        .then(res => res.json())
+        .then(products => {
+          let maxId = products.length > 0 ? Math.max(...products.map(p => Number(p.id))) : 0;
+
+          let newProduct = {
+            id: String(maxId + 1), 
+            name, 
+            description, 
+            price, 
+            image: imagePath
+          };
+
+          // Now POST the new product
+          return fetch(API_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(newProduct)
+          });
+        })
+        .then(res => res.json())
+        .then(data => {
+          alert("Product Added Successfully!");
+          setTimeout(() => {
+            window.location.href = "admin.html";
+          }, 1000);
+        })
+        .catch(err => console.error("Error:", err));
+    });
+
+    function logout() {
+      localStorage.removeItem("loggedInUser");
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>

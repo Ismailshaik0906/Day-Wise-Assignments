@@ -1,0 +1,70 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Admin",
+      "email": "admin@pms.app",
+      "password": "admin",
+      "role": "admin"
+    },
+    {
+      "id": "2",
+      "name": "Demo User",
+      "email": "user@pms.app",
+      "password": "user",
+      "role": "user"
+    },
+    {
+      "id": "b858",
+      "name": "john",
+      "email": "john@example.com",
+      "password": "john123",
+      "role": "user"
+    },
+    {
+      "id": "dbae",
+      "name": "Alice",
+      "email": "alice@example.com",
+      "password": "alice123",
+      "role": "user"
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "name": "Smartphone",
+      "description": "Latest model with great camera",
+      "price": 29999,
+      "image": "images/smartphone.png"
+    },
+    {
+      "id": "2",
+      "name": "Wireless Headphones",
+      "description": "ANC, 30h battery",
+      "price": 5999,
+      "image": "images/headphone.png"
+    },
+    {
+      "name": "Smartwatch",
+      "description": "Tracks fitness, sleep, and heart rate",
+      "price": "8999",
+      "image": "file:///C:/Users/Ismail/OneDrive/Desktop/Frontend/PMS/images/smartwatch.png",
+      "id": "3"
+    },
+    {
+      "id": "4",
+      "name": "Laptop",
+      "description": "Powerful laptop with SSD and 16GB RAM",
+      "price": 59999,
+      "image": "images/laptop.png"
+    }
+  ],
+  "cart": [
+    {
+      "id": 1,
+      "name": "Smartphone",
+      "price": 29999,
+      "quantity": 1
+    }
+  ]
+}
