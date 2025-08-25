@@ -43,3 +43,23 @@ connection.query(deleteQuery, [2], (err, result) => {
 
 // 🔹 Close connection
 connection.end();
+
+
+
+
+/*
+my sql database
+
+
+CREATE DATABASE employeeDB;
+USE employeeDB;
+
+CREATE TABLE employees (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    department VARCHAR(50)
+);
+
+
+*/
