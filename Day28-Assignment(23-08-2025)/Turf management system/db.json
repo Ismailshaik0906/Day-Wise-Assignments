@@ -1,0 +1,68 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Admin",
+      "email": "admin@turf.com",
+      "password": "admin123",
+      "role": "admin"
+    },
+    {
+      "id": "2",
+      "name": "John Doe",
+      "email": "john@user.com",
+      "password": "user123",
+      "role": "user"
+    },
+    {
+      "id": "b0f5",
+      "name": "Charle",
+      "email": "charle@example.com",
+      "password": "charle123",
+      "role": "user"
+    },
+    {
+      "id": "6d01",
+      "name": "Alice",
+      "email": "alice@example.com",
+      "password": "alice123",
+      "role": "admin"
+    }
+  ],
+  "turfs": [
+    {
+      "id": "1",
+      "title": "Soccer Turf",
+      "location": "Downtown",
+      "price": 500,
+      "description": "Full-size soccer turf"
+    }
+  ],
+  "cart": [
+    {
+      "id": "1661",
+      "title": "Soccer Turf1",
+      "location": "NewYork",
+      "price": 600,
+      "description": "Full-size soccer turf",
+      "userId": "b0f5",
+      "quantity": 1
+    }
+  ],
+  "bookings": [
+    {
+      "id": "0617",
+      "userId": "b0f5",
+      "userName": "Charle",
+      "turfTitle": "Soccer Turf",
+      "amount": 500
+    },
+    {
+      "id": "2b4e",
+      "userId": "b0f5",
+      "userName": "Charle",
+      "turfTitle": "Soccer Turf",
+      "amount": 500
+    }
+  ]
+}
