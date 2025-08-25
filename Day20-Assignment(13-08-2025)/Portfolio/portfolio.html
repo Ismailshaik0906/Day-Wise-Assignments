@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio - Ismail</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+  }
+  .navbar {
+    background: linear-gradient(90deg, #4a90e2, #007bff);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    padding: 10px 0;
+  }
+  .navbar-brand {
+    color: white;
+    font-weight: 700;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .navbar-brand:hover {
+    color: #ffde59;
+  }
+  .navbar .nav-link {
+    color: white;
+    font-size: 1.05rem;
+    position: relative;
+    margin-left: 10px;
+  }
+  .navbar .nav-link:hover {
+    color: #ffde59;
+  }
+  #about {
+    padding-top: 100px;
+  }
+  section {
+    padding: 50px 0; 
+  }
+  h2 {
+    color: #333;
+    margin-bottom: 25px; 
+  }
+  h2 i {
+    color: #4a90e2; 
+    margin-right: 8px; 
+  }
+  #about, #skills, #activities {
+    background-color: #f9f9f9; 
+  }
+  .skill-box {
+    padding: 15px;
+    background: white; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+    margin-bottom: 15px; 
+  }
+  .project-card {
+    transition: transform 0.3s; 
+    border-radius: 8px;
+  }
+  .project-card:hover {
+    transform: translateY(-8px); 
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2); 
+  }
+  .project-card img {
+    height: 200px; 
+    object-fit: cover;
+  }
+  .contact-card {
+    background: #fff; 
+    border-radius: 8px; 
+    padding: 15px; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+  }
+  footer {
+    background: #333; 
+    color: white; 
+    padding: 10px 0; 
+    text-align: center; 
+  }
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">Ismail's Portfolio</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#about"><i class="bi bi-person-fill"></i> About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#education"><i class="bi bi-book-fill"></i> Education</a></li>
+        <li class="nav-item"><a class="nav-link" href="#skills"><i class="bi bi-lightbulb-fill"></i> Skills</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects"><i class="bi bi-kanban-fill"></i> Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#activities"><i class="bi bi-trophy-fill"></i> Activities</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact"><i class="bi bi-envelope-fill"></i> Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<section id="about" class="text-center">
+  <div class="container">
+    <h2><i class="bi bi-person-fill"></i> About Me</h2>
+    <p>Hello! I am a passionate frontend developer with experience in creating responsive and dynamic web applications. My expertise includes HTML, CSS, JavaScript, and frameworks like Bootstrap. I also have knowledge of backend technologies like Python and Django. I enjoy problem-solving, building user-friendly interfaces, and continuously learning new technologies to improve my skills. My goal is to develop high-quality, engaging web solutions that enhance user experiences.</p>
+  </div>
+</section>
+
+<section id="education">
+  <div class="container">
+    <h2 class="text-center"><i class="bi bi-book-fill"></i> Education</h2>
+    <div class="row justify-content-center">
+      
+      <div class="col-md-4 mb-3">
+        <div class="card shadow-sm border-0 h-100 text-center">
+          <div class="card-body">
+            <i class="bi bi-mortarboard-fill text-primary fs-1"></i>
+            <h5 class="card-title mt-3">B.Tech in Electronics and Communication Engineering</h5>
+            <p class="text-muted">2020 - 2024</p>
+            <p>Graduated with strong knowledge in core electronics and programming, with hands-on projects in web development.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-4 mb-3">
+        <div class="card shadow-sm border-0 h-100 text-center">
+          <div class="card-body">
+            <i class="bi bi-journal-bookmark-fill text-success fs-1"></i>
+            <h5 class="card-title mt-3">Intermediate (12th-Standard)</h5>
+            <p class="text-muted">2018 - 2020</p>
+            <p>Studied Mathematics, Physics, and Chemistry with distinction and developed an interest in technology and problem-solving.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-4 mb-3">
+        <div class="card shadow-sm border-0 h-100 text-center">
+          <div class="card-body">
+            <i class="bi bi-pencil-fill text-warning fs-1"></i>
+            <h5 class="card-title mt-3">High School</h5>
+            <p class="text-muted">2016 - 2018</p>
+            <p>Completed schooling with excellence in academics and extracurricular activities, building a foundation for higher studies.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container">
+    <h2 class="text-center"><i class="bi bi-lightbulb-fill"></i> Skills</h2>
+    <div class="row text-center">
+      <div class="col-md-3 col-6"><div class="skill-box"><i class="bi bi-code-slash"></i> HTML</div></div>
+      <div class="col-md-3 col-6"><div class="skill-box"><i class="bi bi-palette-fill"></i> CSS</div></div>
+      <div class="col-md-3 col-6"><div class="skill-box"><i class="bi bi-braces"></i> JavaScript</div></div>
+      <div class="col-md-3 col-6"><div class="skill-box"><i class="bi bi-bootstrap-fill"></i> Bootstrap</div></div>
+      <div class="col-md-3 col-6"><div class="skill-box"><i class="bi bi-filetype-py"></i> Python</div></div>
+      <div class="col-md-3 col-6"><div class="skill-box"><i class="bi bi-cup-hot-fill"></i> Java</div></div>
+      <div class="col-md-3 col-6"><div class="skill-box"><i class="bi bi-gear-wide-connected"></i> Django</div></div>
+      <div class="col-md-3 col-6"><div class="skill-box"><i class="bi bi-leaf-fill"></i> Spring</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <h2 class="text-center"><i class="bi bi-kanban-fill"></i> Projects</h2>
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <div class="card project-card shadow-sm">
+          <img src="port.png" class="card-img-top" alt="Project 1">
+          <div class="card-body">
+            <h5 class="card-title">Portfolio Website</h5>
+            <p class="card-text">A responsive personal portfolio built with HTML, CSS, and Bootstrap.</p>
+            <a href="https://github.com/Ismailshaik0906/My_Portfolio" class="btn btn-primary" target="_blank">View Project</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-3">
+        <div class="card project-card shadow-sm">
+          <img src="website.png" class="card-img-top" alt="Project 2">
+          <div class="card-body">
+            <h5 class="card-title">Grocery Website</h5>
+            <p class="card-text">An online store project with product listings, cart, and checkout pages.</p>
+            <a href="#" class="btn btn-primary" target="_blank">View Project</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-3">
+        <div class="card project-card shadow-sm">
+          <img src="park.png" class="card-img-top" alt="Project 3">
+          <div class="card-body">
+            <h5 class="card-title">Smart Parking</h5>
+            <p class="card-text">A smart parking system and EV vehicle charging management system.</p>
+            <a href="#" class="btn btn-primary" target="_blank">View Project</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="activities">
+  <div class="container">
+    <h2 class="text-center"><i class="bi bi-trophy-fill"></i> Extra Activities & Achievements</h2>
+    <ul>
+      <li>Participated in Hackathon 2024</li>
+      <li>Volunteer at Local Tech Community</li>
+      <li>Organized Workshops</li>
+    </ul>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <h2 class="text-center"><i class="bi bi-envelope-fill"></i> Contact Me</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="contact-card mb-3">
+          <h5><i class="bi bi-envelope"></i> Email</h5>
+          <p><a href="mailto:sk.ismail0906@gmail.com">sk.ismail0906@gmail.com</a></p>
+          <h5><i class="bi bi-linkedin"></i> LinkedIn</h5>
+          <p><a href="https://www.linkedin.com/in/sk-ismail/" target="_blank">linkedin.com/in/sk-ismail</a></p>
+          <h5><i class="bi bi-github"></i> Github</h5>
+          <p><a href="https://github.com/Ismailshaik0906" target="_blank">github.com/Ismailshaik0906</a></p>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <form action="success.html" method="get">
+          <input type="text" class="form-control mb-2" placeholder="Your Name" required>
+          <input type="email" class="form-control mb-2" placeholder="Your Email" required>
+          <textarea class="form-control mb-2" rows="4" placeholder="Your Message"></textarea>
+          <button class="btn btn-primary form-control"><i class="bi bi-send-fill"></i> Send</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 Ismail. All Rights Reserved.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
